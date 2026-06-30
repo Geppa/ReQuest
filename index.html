@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ReQuest: Rethinking-based Question-Aware Frame Selection for Long-Form Video QA.">
+  <meta name="keywords" content="ReQuest, Video Question Answering, Long-form Video QA, Frame Selection, MLLM">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReQuest: Rethinking-based Question-Aware Frame Selection for Long-Form Video QA</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title request-title">
+            ReQuest: Rethinking-based <span class="nowrap">Question-Aware</span><br>
+            Frame Selection for Long-Form Video QA
+          </h1>
+
+          <h2 class="subtitle is-4">
+            ECCV 2026
+          </h2>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Minkuk Kim<sup>*1</sup>,</span>
+            <span class="author-block">Suyong Yun<sup>*1</sup>,</span>
+            <span class="author-block">Young Tae Kim<sup>1</sup>,</span>
+            <span class="author-block">Jinyoung Moon<sup>2</sup>,</span>
+            <span class="author-block">Jinwoo Choi<sup>†1</sup>,</span>
+            <span class="author-block">Seong Tae Kim<sup>†1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Kyung Hee University</span>
+            <span class="author-block"><sup>2</sup>Electronics and Telecommunications Research Institute (ETRI)</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+            <span class="author-block"><sup>†</sup>Corresponding authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="./static/pdf/ReQuest_ECCV2026.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/ailab-kyunghee/ReQuest"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png" alt="ReQuest teaser" style="width:100%;">
+      <h2 class="subtitle has-text-centered">
+        ReQuest performs question-aware frame selection only when additional evidence localization is needed.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            How can an MLLM find the few decisive frames hidden inside a long video?
+            Our answer is <b>ReQuest</b>, a question-adaptive evidence-search framework
+            that learns from an MLLM’s own responses. ReQuest first reasons over
+            uniformly sampled frames, then selectively re-thinks uncertain cases using
+            a lightweight evidence selector and uncertainty-adaptive frame sampling.
+          </p>
+          <p>
+            The resulting framework improves long-form video QA across multiple
+            benchmarks and MLLM backbones—without modifying or fine-tuning the
+            underlying answer model.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            ReQuest first performs <b>First Thinking</b> with uniformly sampled frames.
+            If the MLLM is confident, it directly answers the question.
+            If the prediction is uncertain, ReQuest activates a <b>Re-thinking</b> stage,
+            where a lightweight question-aware selector localizes informative frames across the video.
+            The selected frames are then fed back into the MLLM for refined reasoning.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/method.png" alt="ReQuest method" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            ReQuest consistently improves long-form Video QA performance across multiple benchmarks
+            and backbones, including LLaVA-Video, LLaVA-OneVision, and Qwen3-VL.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/results.png" alt="ReQuest results" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            Uniform sampling may miss decisive evidence frames in long videos.
+            ReQuest identifies question-relevant moments and provides the MLLM with more informative
+            visual evidence for answering.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/qualitative.png" alt="ReQuest qualitative result" style="width:100%;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./static/pdf/ReQuest_ECCV2026.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/ailab-kyunghee/ReQuest">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template adapted from
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
