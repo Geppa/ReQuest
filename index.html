@@ -37,7 +37,10 @@
 </nav>
 
 <header class="hero wrap" id="top">
-  <span class="venue">ECCV 2026, Malmö</span>
+  <div class="venue-row">
+    <img class="venue-logo" src="static/images/eccv2026_logo.svg" alt="ECCV 2026, Malmö">
+    <span class="venue">ECCV 2026, Malmö</span>
+  </div>
 
   <h1>Rethinking-based Question-Aware Frame Selection for Long-Form Video QA</h1>
 
@@ -277,8 +280,22 @@
 
   <section id="bibtex" class="wrap">
     <h2>BibTeX</h2>
-    <div class="prose">
-      <p class="bib-soon">The BibTeX entry will be added once the ECCV 2026 proceedings are published.</p>
+    <div class="bib">
+      <button class="copy-btn" type="button" data-copy="bib-request">Copy</button>
+<pre id="bib-request">@inproceedings{kim2026request,
+  title     = {{ReQuest}: Rethinking-Based Question-Aware Frame
+               Selection for Long-Form Video {QA}},
+  author    = {Kim, Minkuk and Yun, Suyong and Kim, Young Tae and
+               Moon, Jinyoung and Choi, Jinwoo and Kim, Seong Tae},
+  booktitle = {Computer Vision -- ECCV 2026},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {17052},
+  pages     = {386--404},
+  publisher = {Springer},
+  address   = {Cham},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-37235-2_23}
+}</pre>
     </div>
   </section>
 </main>
@@ -463,5 +480,16 @@
 
 </script>
 
+<script>
+  /* ---------- copy BibTeX ---------- */
+  document.querySelectorAll('.copy-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = document.getElementById(b.dataset.copy).textContent;
+      function done() { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); }
+      function fallback() { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+    });
+  });
+</script>
 </body>
 </html>
