@@ -73,8 +73,8 @@ a { color: inherit; }
   font-size: 13.5px; font-weight: 500;
 }
 
-.venue-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.venue-logo { height: 62px; width: auto; display: block; }
+.venue-row { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.venue-logo { height: 58px; width: auto; display: block; }
 
 .hero h1 {
   margin: 22px auto 8px;
