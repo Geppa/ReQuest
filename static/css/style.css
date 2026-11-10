@@ -32,7 +32,7 @@ h1, h2, h3 { font-family: "Spectral", Georgia, serif; font-weight: 600; line-hei
 
 a { color: inherit; }
 
-.wrap { max-width: 1000px; margin: 0 auto; padding: 0 22px; }
+.wrap { max-width: 1000px; margin: 0 auto; padding-left: 22px; padding-right: 22px; }
 
 /* ---------- nav ---------- */
 .nav {
@@ -132,8 +132,9 @@ sup { font-size: 11px; color: var(--soft); }
 .btn.ghost:hover { background: #efefe6; }
 
 /* ---------- sections ---------- */
-section { padding: 46px 0 10px; scroll-margin-top: 72px; }
-section h2 { font-size: 29px; margin-bottom: 16px; text-align: center; }
+section { padding: 104px 0 8px; scroll-margin-top: 72px; }
+#overview { padding-top: 64px; }
+section h2 { font-size: 29px; margin-bottom: 30px; text-align: center; }
 .prose { max-width: 720px; margin: 0 auto; }
 .prose p { margin: 0 0 16px; }
 .prose b, .prose strong { font-weight: 600; }
@@ -233,7 +234,8 @@ footer a:hover { color: var(--ink); }
   }
   .loop-mobile .note .g { color: var(--green); }
   .loop-mobile .note .a { color: var(--amber); }
-  section h2 { font-size: 25px; }
+  section { padding-top: 72px; }
+  section h2 { font-size: 25px; margin-bottom: 22px; }
 }
 
 /* ---------- interactive qualitative explorer ---------- */
@@ -319,8 +321,10 @@ footer a:hover { color: var(--ink); }
 /* ---------- results tables ---------- */
 h3.tbl-title {
   font-size: 20px; max-width: 960px;
-  margin: 30px auto 0; padding: 0 2px;
+  margin: 60px auto 0; padding: 0 2px;
 }
+@media (max-width: 640px) { h3.tbl-title { margin-top: 44px; } }
+h3.tbl-title + .prose { margin-top: 12px; }
 .tables-wrap {
   max-width: 960px; margin: 14px auto 0;
   background: var(--card);
